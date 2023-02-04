@@ -6,13 +6,6 @@
   "documentation": "https://www.home-assistant.io/integrations/sonicare",
   "bluetooth": [
     {
-      "manufacturer_id": 477
-    },
-    {
-      "manufacturer_id": 447,
-      "service_uuid": "477ea600-a260-11e4-ae37-0002a5d50001"
-    },
-    {
       "service_uuid": "477ea600-a260-11e4-ae37-0002a5d50001"
     },
     {

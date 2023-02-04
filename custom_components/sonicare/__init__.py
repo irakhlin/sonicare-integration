@@ -28,8 +28,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Sonicare BLE device from a config entry."""
     address = entry.unique_id
     assert address is not None
-    device = async_ble_device_from_address(HomeAssistant, address, connectable=True)
-    data = SonicareBluetoothDeviceData(device)
+    data = SonicareBluetoothDeviceData()
 
     def _needs_poll(
         service_info: BluetoothServiceInfoBleak, last_poll: float | None
