@@ -1,0 +1,30 @@
+{
+  "domain": "sonicare",
+  "version": "0.0.1",
+  "name": "Sonicare",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/sonicare",
+  "bluetooth": [
+    {
+      "manufacturer_id": 477
+    },
+    {
+      "manufacturer_id": 447,
+      "service_uuid": "477ea600-a260-11e4-ae37-0002a5d50001"
+    },
+    {
+      "service_uuid": "477ea600-a260-11e4-ae37-0002a5d50001"
+    },
+    {
+      "local_name": "Philips Sonicare"
+    }
+  ],
+  "requirements": [
+    "git+https://github.com/irakhlin/sonicare_ble.git@main#sonicare_ble"
+  ],
+  "dependencies": [
+    "bluetooth_adapters"
+  ],
+  "codeowners": [],
+  "iot_class": "local_push"
+}
