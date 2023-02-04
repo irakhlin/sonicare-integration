@@ -28,7 +28,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Sonicare BLE device from a config entry."""
     address = entry.unique_id
     assert address is not None
-    data = SonicareBluetoothDeviceData()
+    device = async_ble_device_from_address(HomeAssistant, address, connectable=True)
+    data = SonicareBluetoothDeviceData(device)
 
     def _needs_poll(
         service_info: BluetoothServiceInfoBleak, last_poll: float | None
@@ -50,6 +51,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         # directly to the sonicare code
         # Make sure the device we have is one that we can connect with
         # in case its coming from a passive scanner
+
         if service_info.connectable:
             connectable_device = service_info.device
         elif device := async_ble_device_from_address(
