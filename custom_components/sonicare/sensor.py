@@ -74,6 +74,9 @@ SENSOR_DESCRIPTIONS: dict[str, SensorEntityDescription] = {
     ),
     SonicareSensor.BRUSH_LIFETIME_PERCENTAGE: SensorEntityDescription(
         key=SonicareSensor.BRUSH_LIFETIME_PERCENTAGE
+    ),
+    SonicareSensor.BRUSH_SESSION_ID: SensorEntityDescription(
+        key=SonicareSensor.BRUSH_SESSION_ID
     )
 }
 
