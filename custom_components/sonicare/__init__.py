@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 
+from homeassistant.components.bluetooth.active_update_coordinator import ActiveBluetoothDataUpdateCoordinator
 from sonicare_ble import SonicareBluetoothDeviceData
 
 from homeassistant.components.bluetooth import (
@@ -37,7 +38,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         # and we actually have a way to connect to the device
         return (
             hass.state == CoreState.running
-            and data.poll_needed(service_info, last_poll)
+        #    and data.poll_needed(service_info, last_poll)
             and bool(
                 async_ble_device_from_address(
                     hass, service_info.device.address, connectable=True
@@ -67,7 +68,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     coordinator = hass.data.setdefault(DOMAIN, {})[
         entry.entry_id
-    ] = ActiveBluetoothProcessorCoordinator(
+    ] = ActiveBluetoothDataUpdateCoordinator(
         hass,
         _LOGGER,
         address=address,
@@ -84,6 +85,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     entry.async_on_unload(
         coordinator.async_start()
     )  # only start after all platforms have had a chance to subscribe
+    coordinator.async_register_processor
     return True
 
 
