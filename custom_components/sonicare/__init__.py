@@ -72,8 +72,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hass,
         _LOGGER,
         address=address,
-        mode=BluetoothScanningMode.PASSIVE,
-        update_method=data.update,
+        mode=BluetoothScanningMode.ACTIVE,
+#        update_method=data.update,
         needs_poll_method=_needs_poll,
         poll_method=_async_poll,
         # We will take advertisements from non-connectable devices
